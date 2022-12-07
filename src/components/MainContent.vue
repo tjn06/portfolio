@@ -48,7 +48,7 @@
           >
             <article ref="animate0">
               <div class="first-page-header">
-                <h1>MY SKILLS</h1>
+                <h1>SKILLS & INFO</h1>
               </div>
 
               <div class="quote">Hard working and creativeperson with a keen eye for details</div>
