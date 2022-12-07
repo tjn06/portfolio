@@ -78,7 +78,7 @@
     bottom: 0;
     width: calc(100% - 16px);
     display: flex;
-    padding: 0.6rem;
+    padding: 1rem 0.6rem 1rem 0.6rem;
     background-color: #00000043;
     justify-content: center;
   }

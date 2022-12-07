@@ -66,7 +66,7 @@ import ContactButton from './svg/ContactButton.vue'
       isFullscreen() {
           if (this.contactOpenUser) {
             return {
-              'background-color' : '#070131',
+              'background-color' : '#13001A',
               'padding-top': '30%',
               'padding-left': '20%',
               'height': '100%'
