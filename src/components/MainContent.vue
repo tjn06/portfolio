@@ -52,7 +52,7 @@
               </div>
 
               <div class="quote">Hard working and creativeperson with a keen eye for details</div>
-              <a href="/portfolio/assets/tobias-johnsson-cv.pdf"><span class="quote">Download my CV ( PDF )</span><img :style="{'height': '10px', 'margin-left' : '8px', 'margin-top': '2px'}" src="/assets/arrow-btn-forward.svg"/></a>
+              <a href="https://github.com/tjn06/portfolio/raw/main/assets/tobias-johnsson-cv.pdf"><span class="quote">Download my CV ( PDF )</span><img :style="{'height': '10px', 'margin-left' : '8px', 'margin-top': '2px'}" src="/assets/arrow-btn-forward.svg"/></a>
 
               <ul class="flex-container wrap"
               :style="initialHeaderStyle ?
