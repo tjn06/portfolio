@@ -51,7 +51,7 @@
                 <h1>SKILLS & INFO</h1>
               </div>
 
-              <div class="quote">Hard working and creativeperson with a keen eye for details</div>
+              <div class="quote">Hard working and creative person with a keen eye for details</div>
               <a href="https://github.com/tjn06/portfolio/raw/main/assets/tobias-johnsson-cv.pdf"><span class="quote">Download my CV ( PDF )</span><img :style="{'height': '10px', 'margin-left' : '8px', 'margin-top': '2px'}" src="/assets/arrow-btn-forward.svg"/></a>
 
               <ul class="flex-container wrap"
@@ -76,11 +76,8 @@
                 <li class="flex-item">Figma</li>
                 <li class="flex-item">Illustrator</li>
                 <li class="flex-item">Photoshop</li>
-                <li class="flex-item">Jira</li>
                 <li class="flex-item">E-mail-templates</li>
                 <li class="flex-item">Illustrator</li>
-                <li class="flex-item">Photoshop</li>
-                <li class="flex-item">Photoshop</li>
                 <li class="flex-item">Ajax</li>
                 <li class="flex-item">Axios</li>
                 <li class="flex-item">MERN-stack</li>
@@ -318,7 +315,7 @@
                       </a>
                     </div>
                     <div class="date">REACT</div>
-                    <div class="tasks">Redigera/edit av/på in bottom</div>
+                    <div class="tasks">Redigera/edit on/off in bottom</div>
                   </li>
                   <li>
                     <div class="separator">
@@ -332,7 +329,7 @@
                       </a>
                     </div>
                     <div class="date">VUE</div>
-                    <div class="tasks">Add, report, delete vote on snippets</div>
+                    <div class="tasks">Add, report, delete, vote on snippets</div>
                   </li>
                 </ul>
               </Transition>
@@ -368,7 +365,7 @@
                       <img :style="{'height': '12px', 'margin' : '0px 0px 0 0px'}" src="/assets/arrow-btn-forward.svg"/>
                     </a>
                     <div class="date">REACT NATIVE/CROSSPLATFORM</div>
-                    <div class="tasks">Nhl player stats</div>
+                    <div class="tasks">NHL-player stats</div>
                   </li>
                   <li>
                     <a class="items-row" href="https://github.com/tjn06/EducationSwiftUI" target="_blank">
