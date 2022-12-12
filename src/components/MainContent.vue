@@ -134,7 +134,7 @@
               <ul>
                 <li>
                   <span>ICT Scandinavia </span><span class="extra-intern"> *INTERNSHIP </span>
-                  <div class="date"> oct. 2020–dec. 2020</div>
+                  <div class="date"> sep. 2022–nov. 2022, 2 months</div>
                   <div class="tasks">React Native(Expo)</div>
                 </li>
                 <li>
@@ -143,14 +143,14 @@
                   <div class="tasks">IT-Högskolan </div>
                 </li>
                 <li>
-                  <span>Oljemagasinet </span><span class="extra-intern"> *INTERNSHIP </span>
-                  <div class="date"> oct. 2020–dec. 2020</div>
-                  <div class="tasks">Vue.js , BootstrapVue, Adobe Illustrator, Photoshop...</div>
+                  <span>Kvdbil </span><span class="extra-intern"> *INTERNSHIP </span>
+                  <div class="date"> feb. 2020–may. 2020, 3 months</div>
+                  <div class="tasks">React, Next.js, GraphQL</div>
                 </li>
                 <li>
-                  <span>Kvdbil </span><span class="extra-intern"> *INTERNSHIP </span>
-                  <div class="date"> okt. 2020–dec. 2020</div>
-                  <div class="tasks">React, Next.js, GraphQL</div>
+                  <span>Oljemagasinet </span><span class="extra-intern"> *INTERNSHIP </span>
+                  <div class="date"> oct. 2020–dec. 2020, 3 months</div>
+                  <div class="tasks">Vue.js, BootstrapVue, Adobe Illustrator, Photoshop...</div>
                 </li>
                 <li>
                   <span> Front-end </span><span class="extra-intern"> *EDUCATION</span>
@@ -469,15 +469,13 @@
         fullScreenIndex: 0,
         carouselPositions: null,
         fullScreenContainer: 0,
-        /* currentItem: 0, */
         onFirstItem: true,
         iUpdate: null,
         isOnLastItem: false,
         clickMove: false,
-        s: null,
+        timeOutValue: null,
         direction: 'next',
         windowInnerWidth: 0,
-        // categories: ['START', 'PLATFORMAR', 'FORM', 'KOMMUNIKATION' ],
         latestProjects: true,
         appAndOtherProjects: true,
       }
@@ -531,7 +529,7 @@
       },
 
       changeFullPageClickFromNav(itemIndex) {
-        clearTimeout(this.s)
+        clearTimeout(this.timeOutValue)
         this.clickMove = true
         this.$store.commit('changeCurrentItem', itemIndex)
         let test = this.getFullPageElements()
@@ -545,13 +543,13 @@
 
         this.disableBtnsHandler(itemIndex)
 
-        this.s = setTimeout(() => {
+        this.timeOutValue = setTimeout(() => {
           this.clickMove = false
         }, 1000)
       },
 
       changeFullPageClick(direction) {
-        clearTimeout(this.s)
+        clearTimeout(this.timeOutValue)
         this.clickMove = true
 
         let currentScrollTop = this.$refs.container.scrollTop
@@ -599,7 +597,7 @@
             this.disableBtnsHandler(this.currentItem)
           }
         }
-        this.s = setTimeout(() => {
+        this.timeOutValue = setTimeout(() => {
           this.clickMove = false
         }, 800)
       },
