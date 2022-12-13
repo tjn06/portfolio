@@ -77,12 +77,12 @@
                 <li class="flex-item">Illustrator</li>
                 <li class="flex-item">Photoshop</li>
                 <li class="flex-item">E-mail-templates</li>
-                <li class="flex-item">Illustrator</li>
+                <li class="flex-item">Flex/grid</li>
                 <li class="flex-item">Ajax</li>
                 <li class="flex-item">Axios</li>
                 <li class="flex-item">MERN-stack</li>
                 <li class="flex-item">JAVA</li>
-                <li class="flex-item">Typecript</li>
+                <li class="flex-item">Typescript</li>
                 <li class="flex-item">HTML/CSS</li>
                 <li class="flex-item">MongoDB</li>
                 <li class="flex-item">SQL</li>
