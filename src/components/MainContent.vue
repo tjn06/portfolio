@@ -70,7 +70,7 @@
                 <li class="flex-item">Redux</li>
                 <li class="flex-item">Git</li>
                 <li class="flex-item">Scrum</li>
-                <li class="flex-item">Agile</li>
+                <li class="flex-item">Agile methods</li>
                 <li class="flex-item">Prototypes</li>
                 <li class="flex-item">Jira</li>
                 <li class="flex-item">Figma</li>
@@ -82,11 +82,12 @@
                 <li class="flex-item">Axios</li>
                 <li class="flex-item">MERN-stack</li>
                 <li class="flex-item">JAVA</li>
-                <li class="flex-item">C#</li>
+                <li class="flex-item">Typecript</li>
                 <li class="flex-item">HTML/CSS</li>
                 <li class="flex-item">MongoDB</li>
                 <li class="flex-item">SQL</li>
                 <li class="flex-item">Firebase</li>
+                <li class="flex-item">Java</li>
               </ul>
 
               <div class="skills"
