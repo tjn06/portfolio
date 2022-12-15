@@ -139,7 +139,7 @@
                   <div class="tasks">React Native(Expo)</div>
                 </li>
                 <li>
-                  <span>Aplication Dev Android, Iphone </span><span class="extra-edu"> *EDUCATION</span>
+                  <span>Application-dev Android, Iphone </span><span class="extra-edu"> *EDUCATION</span>
                   <div class="date"> aug. 2021–ongoing</div>
                   <div class="tasks">IT-Högskolan </div>
                 </li>
@@ -151,7 +151,7 @@
                 <li>
                   <span>Oljemagasinet </span><span class="extra-intern"> *INTERNSHIP </span>
                   <div class="date"> oct. 2020–dec. 2020, 3 months</div>
-                  <div class="tasks">Vue.js, BootstrapVue, Adobe Illustrator, Photoshop...</div>
+                  <div class="tasks">Vue.js, BootstrapVue, Adobe Illustrator, Photoshop</div>
                 </li>
                 <li>
                   <span> Front-end </span><span class="extra-intern"> *EDUCATION</span>
