@@ -1,29 +1,27 @@
 <script>
-import ContactButton from './svg/ContactButton.vue'
+  import ContactButton from './svg/ContactButton.vue'
 
   export default {
     components: {
-      ContactButton,
-    } ,
+      ContactButton
+    },
     created() {
       window.addEventListener('resize', this.windowResizeHandler)
       this.windowInnerWidth = window.innerWidth
       window.addEventListener('resize', this.getWindowWidth)
       this.getWindowWidth()
     },
-    mounted() {
-
-    },
+    mounted() {},
     data() {
       return {
         contactOpenMediaQ: false,
         contactOpenUser: false,
-        windowInnerWidth: 0,
+        windowInnerWidth: 0
       }
     },
     watch: {
       initialHeaderStyle(newV, oldV) {
-        if ((newV != oldV)) {
+        if (newV != oldV) {
           window.removeEventListener('resize', this.windowResizeHandler)
         }
       }
@@ -36,15 +34,14 @@ import ContactButton from './svg/ContactButton.vue'
         if (window.innerWidth >= 790 && this.contactOpenUser) {
           this.contactOpenMediaQ = true
           this.contactOpenUser = false
-        }
-        else if (window.innerWidth <= 790 && !this.contactOpenUser) {
+        } else if (window.innerWidth <= 790 && !this.contactOpenUser) {
           this.contactOpenMediaQ = false
           this.contactOpenUser = false
         }
       },
       openCloseHeader() {
         this.contactOpenUser = !this.contactOpenUser
-        console.log("thisthis2", this.contactOpenUser)
+        console.log('thisthis2', this.contactOpenUser)
       }
     },
     computed: {
@@ -52,16 +49,16 @@ import ContactButton from './svg/ContactButton.vue'
         return this.$store.state.currentItem
       },
       isFirstItem() {
-          if (this.currentItem != 0 && this.windowInnerWidth >= 790) {
-            return {
-              'opacity': '0.2'
-              /* color: 'red' */
-            }
-          } else {
-            return {
-              'opacity': '1'
-            }
+        if (this.currentItem != 0 && this.windowInnerWidth >= 790) {
+          return {
+            opacity: '0.2'
+            /* color: 'red' */
           }
+        } else {
+          return {
+            opacity: '1'
+          }
+        }
       },
       isFullscreen() {
           if (this.contactOpenUser) {
@@ -77,6 +74,19 @@ import ContactButton from './svg/ContactButton.vue'
               'padding-left': '10px',
             }
           }
+        if (this.contactOpenUser) {
+          return {
+            'background-color': '#13001A',
+            'padding-top': '30%',
+            'padding-left': '20%',
+            height: '100%'
+          }
+        } else {
+          return {
+            'padding-top': 'unset',
+            'padding-left': '10px'
+          }
+        }
       },
       initialHeaderStyle() {
         return this.$store.state.initialHeaderStyle
@@ -91,8 +101,9 @@ import ContactButton from './svg/ContactButton.vue'
 
 <template>
   <!-- v-if="!contactOpenMediaQ" -->
-  <header :class="[ initialHeaderStyle ? 'header-default' : 'initial-header']"
-  :style="isFullscreen"
+  <header
+    :class="[initialHeaderStyle ? 'header-default' : 'initial-header']"
+    :style="isFullscreen"
   >
     <!--     {{ currentItem }}
     {{ initialHeaderStyle }} -->
@@ -103,32 +114,47 @@ import ContactButton from './svg/ContactButton.vue'
         :style="isFirstItem"
         src="/assets/tj-icon.svg"
       />
-      <ContactButton v-if="(this.windowInnerWidth <= 790)" @openCloseHeader="openCloseHeader"
-      :contactOpenUser="contactOpenUser"/>
+      <ContactButton
+        v-if="this.windowInnerWidth <= 790"
+        @openCloseHeader="openCloseHeader"
+        :contactOpenUser="contactOpenUser"
+      />
     </div>
 
-      <div v-if="(this.windowInnerWidth >= 790 || contactOpenUser)"
-        :class="
-          'logo-message ' +
-         'direction-flex'
-        "
-        :style="isFirstItem"
-      >
-        <span class="presentation">TOBIAS JOHNSSON</span>
-        <span class="presentation">DEVELOPER APP | WEB</span>
-      </div>
-      <div v-if="(this.windowInnerWidth >= 790 || contactOpenUser)" class="in-columns mail" :style="isFirstItem">
-        <span>E-MAIL</span><span>tobb-on@hotmail.com</span>
-      </div>
+    <div
+      v-if="this.windowInnerWidth >= 790 || contactOpenUser"
+      :class="'logo-message ' + 'direction-flex'"
+      :style="isFirstItem"
+    >
+      <span class="presentation">TOBIAS JOHNSSON</span>
+      <span class="presentation">DEVELOPER APP | WEB</span>
+    </div>
+    <div
+      v-if="this.windowInnerWidth >= 790 || contactOpenUser"
+      class="in-columns mail"
+      :style="isFirstItem"
+    >
+      <span>E-MAIL</span><span><a href="mailto:">tobb-on@hotmail.com</a></span>
+    </div>
 
-      <div v-if="(this.windowInnerWidth >= 790 || contactOpenUser)" class="in-columns tel" :style="isFirstItem">
+    <!-- <div v-if="(this.windowInnerWidth >= 790 || contactOpenUser)" class="in-columns tel" :style="isFirstItem">
         <span>PHONE</span><span>0704249358</span>
-      </div>
+      </div> -->
+    <div v-if="(this.windowInnerWidth >= 790 || contactOpenUser)" class="in-columns tel" :style="isFirstItem">
+        <span>GITHUB</span><a href="https://github.com/tjn06" target="_blanc">github.cm/tjn06</a>
+    </div>
 
-      <div v-if="(this.windowInnerWidth >= 790 || contactOpenUser)" class="in-columns tel" :style="isFirstItem">
-        <img :class="!initialHeaderStyle ? 'toppi' : ''"
-        :style="{'border-radius': '50%', 'width': '40px'}" src="/assets/port.jpg"/>
-      </div>
+    <div
+      v-if="this.windowInnerWidth >= 790 || contactOpenUser"
+      class="in-columns tel"
+      :style="isFirstItem"
+    >
+      <img
+        :class="!initialHeaderStyle ? 'toppi' : ''"
+        :style="{ 'border-radius': '50%', width: '40px' }"
+        src="/assets/port.jpg"
+      />
+    </div>
   </header>
 </template>
 
@@ -136,6 +162,7 @@ import ContactButton from './svg/ContactButton.vue'
   .toppi {
     margin-top: 2rem;
   }
+
   .top-contact {
     display: flex;
     flex-direction: row;
@@ -145,7 +172,6 @@ import ContactButton from './svg/ContactButton.vue'
     height: 40px;
   }
   header {
-
   }
   .in-columns {
     display: flex;
@@ -176,6 +202,14 @@ import ContactButton from './svg/ContactButton.vue'
     /* color: #ccf4ff; */
     font-weight: 800;
   }
+  .in-columns a {
+    text-decoration: none;
+    color: #bfbfbf;
+    font-weight: 800;
+  }
+  .in-columns a:hover {
+    color: #ffffff;
+  }
   .presentation {
     color: #ffffff;
     font-weight: 800;
@@ -186,7 +220,7 @@ import ContactButton from './svg/ContactButton.vue'
     font-size: 14px;
   }
   .adress:hover span {
-    opacity: 1.0;
+    opacity: 1;
   }
   .logo-size {
     /* max-height: 100%; */
@@ -231,17 +265,17 @@ import ContactButton from './svg/ContactButton.vue'
       align-items: unset;
       margin: unset;
       width: unset;
-      height:unset;
+      height: unset;
     }
     .direction-flex-initial {
       display: inline-flex;
       flex-direction: column;
     }
     .logo-size {
-    max-height: 100%;
-    margin-left: 2vw;
-    transition: 0.3s ease;
-  }
+      max-height: 100%;
+      margin-left: 2vw;
+      transition: 0.3s ease;
+    }
     .logo-size-initial {
       margin-top: calc(16vh + 10px);
       width: 300px;
@@ -272,7 +306,7 @@ import ContactButton from './svg/ContactButton.vue'
       align-items: flex-end;
       width: 38%;
       text-align: right;
-      gap: 12px;
+      gap: 11px;
       margin: 0 0px 0 0px;
       height: unset;
       color: white;
