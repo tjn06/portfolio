@@ -75,7 +75,7 @@
     font-size: 13px;
     position: fixed;
     z-index: 10;
-    bottom: 50vh;
+    bottom: 0;
     width: calc(100% - 16px);
     display: flex;
     padding: 1rem 0.6rem 1rem 0.6rem;

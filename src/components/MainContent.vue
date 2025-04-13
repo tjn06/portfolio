@@ -1144,26 +1144,30 @@
           if (this.windowInnerWidth <= 790) {
             return {
               'margin-top': '12vh'
+              , 'background-color': 'red'
               /* color: 'blue' */
             }
           } else {
             return {
-              'margin-top': '20vh'
+              'margin-top': '20vh',
+               'background-color': 'red'
               /* color: 'blue' */
             }
           }
         } else {
           if (this.windowInnerWidth <= 790) {
             return {
-              'margin-top': '12vh'
+              'margin-top': '12vh',
+               'background-color': 'red'
               /* color: 'red' */
             }
           } else {
             return {
               // 'padding-top': this.logoFromTop + 'px',
               'margin-top': '15vh',
-              'padding-top': '65px'
-              /* color: 'red' */
+              'padding-top': '605px',
+              'background-color': 'red'
+       
             }
           }
         }
