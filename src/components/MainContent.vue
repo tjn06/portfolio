@@ -42,10 +42,7 @@
         <div class="screen-0">
           <div
             :style="topMarginStyles"
-            :class="
-              
-              hasTriggeredPagePagination ? 'fullscreen-content first-page-content-padding' : 'initial-desktop'
-            "
+            :class="'fullscreen-content first-page-content-padding'"
           >
             <article ref="animate0">
               <div class="first-page-header">
