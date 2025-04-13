@@ -16,7 +16,7 @@
       return {
         contactOpenMediaQ: false,
         contactOpenUser: false,
-        windowInnerWidth: 0
+        windowInnerWidth: window.innerWidth
       }
     },
     watch: {
