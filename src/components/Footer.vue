@@ -75,7 +75,7 @@
     font-size: 13px;
     position: fixed;
     z-index: 10;
-    bottom: 0;
+    bottom: 50vh;
     width: calc(100% - 16px);
     display: flex;
     padding: 1rem 0.6rem 1rem 0.6rem;
@@ -131,6 +131,7 @@
       position: fixed;
       z-index: 10;
       right: 0;
+      bottom: 0;
       display: flex;
       padding: 1rem 1rem 1rem 3rem;
     }
