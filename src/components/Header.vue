@@ -20,7 +20,7 @@
       }
     },
     watch: {
-      initialHeaderStyle(newV, oldV) {
+      hasTriggeredPagePagination(newV, oldV) {
         if (newV != oldV) {
           window.removeEventListener('resize', this.windowResizeHandler)
         }
@@ -29,7 +29,6 @@
     methods: {
       windowResizeHandler(e) {},
       getWindowWidth() {
-        /* console.log('muu', window.innerWidth) */
         this.windowInnerWidth = window.innerWidth
         if (window.innerWidth >= 790 && this.contactOpenUser) {
           this.contactOpenMediaQ = true
@@ -41,7 +40,6 @@
       },
       openCloseHeader() {
         this.contactOpenUser = !this.contactOpenUser
-        console.log('thisthis2', this.contactOpenUser)
       }
     },
     computed: {
@@ -88,8 +86,8 @@
           }
         }
       },
-      initialHeaderStyle() {
-        return this.$store.state.initialHeaderStyle
+      hasTriggeredPagePagination() {
+        return this.$store.state.changedPageOnce
       }
     },
     destroyed() {
@@ -102,15 +100,15 @@
 <template>
   <!-- v-if="!contactOpenMediaQ" -->
   <header
-    :class="[initialHeaderStyle ? 'header-default' : 'initial-header']"
+    :class="[hasTriggeredPagePagination ? 'header-default' : 'initial-header']"
     :style="isFullscreen"
   >
     <!--     {{ currentItem }}
-    {{ initialHeaderStyle }} -->
+    {{ hasTriggeredPagePagination }} -->
     <div class="top-contact">
       <img
         ref="logo"
-        :class="initialHeaderStyle ? 'logo-size' : 'logo-size-initial'"
+        :class="hasTriggeredPagePagination ? 'logo-size' : 'logo-size-initial'"
         :style="isFirstItem"
         src="/assets/tj-icon.svg"
       />
@@ -150,7 +148,7 @@
       :style="isFirstItem"
     >
       <img
-        :class="!initialHeaderStyle ? 'toppi' : ''"
+        :class="!hasTriggeredPagePagination ? 'toppi' : ''"
         :style="{ 'border-radius': '50%', width: '40px' }"
         src="/assets/port.jpg"
       />

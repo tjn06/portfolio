@@ -1,22 +1,34 @@
 import { createStore /*storeKey */ } from 'vuex'
 
 const mutations = {
-  changeCurrentItemFromNav(state, payload ) {
-    state.fromNavObj = {...state.fromNavOb, itemIndex: payload.index, fromNav: payload.fromNav}
-  },
+    changeCurrentItemFromNav(state, payload) {
+      state.fromNavObj = {
+        ...state.fromNavOb,
+        itemIndex: payload.index,
+        fromNav: payload.fromNav
+      }
+    },
     changeCurrentItem(state, currentItem) {
-      state.currentItem = currentItem
-      state.fromNavObj = {...state.currentItem, itemIndex: currentItem, fromNav: false}
+      if (state.currentItem !== currentItem) {
+        state.currentItem = currentItem
+      }
+
+      if (state?.fromNavObj?.itemIndex !== currentItem) {
+        state.fromNavObj = {
+          ...state.fromNavObj,
+          itemIndex: currentItem,
+          fromNav: false
+        }
+      }
     },
     changeHeaderStyleOnce(state) {
-      // console.log('Changed initialHeaderStyle once')
-      state.initialHeaderStyle = true
-    },
+      state.changedPageOnce = true
+    }
   },
   state = {
     currentItem: 0,
-    fromNavObj: {itemIndex: 0, fromNav: false},
-    initialHeaderStyle: false
+    fromNavObj: { itemIndex: 0, fromNav: false },
+    changedPageOnce: false
   },
   getters = {}
 

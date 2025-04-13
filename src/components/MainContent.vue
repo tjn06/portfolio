@@ -3,7 +3,7 @@
     <svg
       :style="{
         pointerEvents: onFirstItem ? 'none' : 'auto',
-        cursor: isOnLastItem ? 'auto' : 'pointer'
+        cursor: 'pointer'
       }"
       @click="changeFullPageClick('previous', 'frombtn', false)"
       class="up-arrow"
@@ -43,7 +43,7 @@
           <div
             :style="topMarginStyles"
             :class="
-              initialHeaderStyle ? 'fullscreen-content' : 'initial-desktop'
+              hasTriggeredPagePagination ? 'fullscreen-content' : 'initial-desktop'
             "
           >
             <article ref="animate0">
@@ -89,7 +89,7 @@
               <ul
                 class="flex-container wrap"
                 :style="
-                  initialHeaderStyle
+                  hasTriggeredPagePagination
                     ? { 'margin-bottom': '2vh', 'margin-top': '1rem' }
                     : { 'margin-bottom': '0vh', 'margin-top': '3.5rem' }
                 "
@@ -128,7 +128,7 @@
               <div
                 class="skills"
                 :style="
-                  initialHeaderStyle
+                  hasTriggeredPagePagination
                     ? { 'margin-bottom': '8vh', 'margin-top': '2.8rem' }
                     : { 'margin-bottom': '8vh', 'margin-top': '2.3rem' }
                 "
@@ -943,7 +943,7 @@
     },
     watch: {
       currentItem(newValue, oldValue) {
-        this.initialHeaderStyleOnce()
+        this.setInitialHeaderStyleOnce()
       },
       fromNav(newValue, oldValue) {
         if (newValue.fromNav) {
@@ -952,16 +952,12 @@
       }
     },
     methods: {
-      initialHeaderStyleOnce() {
-        if (!this.initialHeaderStyle)
+      setInitialHeaderStyleOnce() {
+        if (this.hasTriggeredPagePagination === false) {
           this.$store.commit('changeHeaderStyleOnce')
+        }
       },
-      /*       changeHeaderStyleOnce() {
-        console.log('Changed initialHeaderStyle once')
-        this.initialHeaderStyle = true
-      }, */
       getWindowWidth() {
-        /* console.log('muu', window.innerWidth) */
         this.windowInnerWidth = window.innerWidth
       },
       getFullPagePositions() {
@@ -985,7 +981,7 @@
             fullscreenElArr.push(this.$refs[el])
           }
         })
-        // console.log('fullscreenElArr', fullscreenElArr)
+        
         return fullscreenElArr
       },
 
@@ -998,8 +994,7 @@
           test[itemIndex].classList.value = 'animateup'
         }
         this.scrollTo(itemIndex)
-        // console.log('caruselpos', this.carouselPositions)
-
+        
         this.disableBtnsHandler(itemIndex)
 
         this.timeOutValue = setTimeout(() => {
@@ -1026,9 +1021,9 @@
             ) {
               /* this.currentItem++ */
               this.$store.commit('changeCurrentItem', this.currentItem + 1)
-              // console.log('plus', this.currentItem)
+              
               let test = this.getFullPageElements()
-              // console.log('test', test[1])
+              
 
               if (
                 test[this.currentItem].classList.value != 'animateup' &&
@@ -1037,15 +1032,15 @@
                 test[this.currentItem].classList.value = 'animateup'
               }
               this.scrollTo(this.currentItem)
-              // console.log('caruselpos', this.carouselPositions)
+              
             } else if (direction === 'previous' && this.currentItem >= 0) {
               /* this.currentItem-- */
               this.$store.commit('changeCurrentItem', this.currentItem - 1)
-              // console.log('minus', this.currentItem)
+              
               this.scrollTo(this.currentItem)
-              // console.log('caruselpos', this.carouselPositions)
+              
               let test = this.getFullPageElements()
-              // console.log('test', test)
+              
               if (
                 test[this.currentItem].classList.value != 'animateup' &&
                 this.currentItem != 0
@@ -1062,9 +1057,9 @@
       },
 
       changeFullPageScroll(direction) {
-        // console.log('clickmove')
+        
         if (!this.clickMove) {
-          // console.log('direction', direction)
+          
           let currentScrollTop = this.$refs.container.scrollTop
           let ifToScrollPosition = currentScrollTop + this.fullScreenContainer
 
@@ -1077,7 +1072,7 @@
               // if (this.iUpdate != i) {
               this.$store.commit('changeCurrentItem', i)
               let test = this.getFullPageElements()
-              // console.log('test', test)
+              
               if (
                 test[this.currentItem].classList.value !== 'animateup' &&
                 this.currentItem != 0
@@ -1139,11 +1134,11 @@
       fromNav() {
         return this.$store.state.fromNavObj
       },
-      initialHeaderStyle() {
-        return this.$store.state.initialHeaderStyle
+      hasTriggeredPagePagination() {
+        return this.$store.state.changedPageOnce
       },
       topMarginStyles() {
-        if (this.initialHeaderStyle) {
+        if (this.hasTriggeredPagePagination === true) {
           if (this.windowInnerWidth <= 790) {
             return {
               'margin-top': '12vh'
@@ -1325,17 +1320,17 @@
     border-bottom: 1px solid rgba(128, 128, 128, 0.251);
   }
   .location {
-    font-size: 15px;
+    font-size: 11px;
     color: rgb(211, 211, 211);
   }
   .date {
-    font-size: 13px;
+    font-size: 11px;
     color: rgb(150, 150, 150);
   }
 
   .tasks {
-    font-size: 15px;
-    color: rgb(211, 211, 211);
+    font-size: 14px;
+    color: rgb(197, 197, 197);
     padding-top: 2px;
     margin-bottom: 5px;
     padding-bottom: 4px;
@@ -1343,7 +1338,7 @@
   }
 
   .tasks > a {
-    color: rgb(211, 211, 211);
+    color: rgb(197, 197, 197);
     text-decoration: none;
   }
   .tasks > a:hover {
@@ -1512,7 +1507,6 @@
   .fullscreen-content {
     margin-left: auto;
     margin-right: auto;
-
     padding: 20px 5px 2px 5px;
     border-radius: 5px;
     text-align: left;
@@ -1615,6 +1609,7 @@
     z-index: 10;
     bottom: 70px;
     right: 25px;
+    opacity: 0.6;
     /* bottom: 40px;
     left: 50%; */
     /* transform: translate(-50%, -50%); */
@@ -1625,11 +1620,16 @@
     z-index: 10;
     bottom: 70px;
     left: 25px;
+    opacity: 0.6;
 
     /* top: 50px;
     left: 50%; */
     /* transform: translate(-50%, -50%); */
     height: 15px;
+  }
+  .down-arrow:hover,
+  .up-arrow:hover {
+    opacity: 1;
   }
   .item {
     border-top: 1px solid black;
@@ -1673,8 +1673,8 @@
       transform: translate(-50%, -50%);
     }
     .fullscreen-content {
-      /* color: green; */
       text-align: left;
+      margin-right: 10vw;
       margin-left: 23vw;
       max-width: 700px;
       padding-right: 1rem;
