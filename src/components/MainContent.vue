@@ -43,7 +43,8 @@
           <div
             :style="topMarginStyles"
             :class="
-              hasTriggeredPagePagination ? 'fullscreen-content' : 'initial-desktop'
+              
+              hasTriggeredPagePagination ? 'fullscreen-content first-page-content-padding' : 'initial-desktop'
             "
           >
             <article ref="animate0">
@@ -89,9 +90,10 @@
               <ul
                 class="flex-container wrap"
                 :style="
-                  hasTriggeredPagePagination
+                  (hasTriggeredPagePagination)
                     ? { 'margin-bottom': '2vh', 'margin-top': '1rem' }
-                    : { 'margin-bottom': '0vh', 'margin-top': '3.5rem' }
+                    : this.windowInnerWidth <= 790 ? { 'margin-bottom': '2vh', 'margin-top': '1rem' } :
+                      { 'margin-bottom': '0vh', 'margin-top': '3.5rem' }
                 "
               >
                 <li class="flex-item">SwiftUI/UIKit</li>
@@ -128,7 +130,8 @@
               <div
                 class="skills"
                 :style="
-                  hasTriggeredPagePagination
+                  this.windowInnerWidth <= 790 ?
+                  { 'margin-bottom': '0', 'margin-top': '0' } : hasTriggeredPagePagination
                     ? { 'margin-bottom': '8vh', 'margin-top': '2.8rem' }
                     : { 'margin-bottom': '8vh', 'margin-top': '2.3rem' }
                 "
@@ -179,7 +182,7 @@
       </section>
       <section ref="fullscreen1">
         <div class="screen-1">
-          <div :style="topMarginStyles" :class="'fullscreen-content'">
+          <div :style="topMarginStyles" :class="'content-padding fullscreen-content'">
             <article class="initial-hidden" ref="animate1">
               <div class="top-header-container">
                 <h1 style="margin-bottom: 5px">EXPERIENCES</h1>
@@ -935,7 +938,7 @@
         clickMove: false,
         timeOutValue: null,
         direction: 'next',
-        windowInnerWidth: 0,
+        windowInnerWidth: window.innerWidth,
         latestProjects: true,
         latestExperiences: true,
         appAndOtherProjects: true
@@ -1153,7 +1156,7 @@
         } else {
           if (this.windowInnerWidth <= 790) {
             return {
-              'margin-top': '18vh'
+              'margin-top': '12vh'
               /* color: 'red' */
             }
           } else {
@@ -1417,6 +1420,8 @@
     }
   }
 
+
+
   .screen-0,
   .screen-1,
   .screen-2,
@@ -1503,11 +1508,21 @@
       /* transform: scale(1); */
     }
   }
+  .animateup2 {
+    position: relative;
+    animation: pulseup 0.5s ease;
+  }
+  .first-page-content-padding {
+    padding: 0 5px 0 5px;
+  }
+
+  .content-padding {
+    padding: 20px 5px 2px 5px;
+  }
 
   .fullscreen-content {
     margin-left: auto;
     margin-right: auto;
-    padding: 20px 5px 2px 5px;
     border-radius: 5px;
     text-align: left;
     /* max-width: 896px; */
@@ -1515,6 +1530,7 @@
     padding-left: 1rem;
     padding-right: 1rem;
   }
+
   .initial-desktop {
     /*  margin-left: 40%; */
     /* max-width: 896px; */
